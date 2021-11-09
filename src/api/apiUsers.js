@@ -38,7 +38,7 @@ const getUsers = (email, password) => {
   }];
 
   const haveUser = users.find((user) => user.email === email && user.password === password);
-  console.log(haveUser);
+
   if (haveUser) {
     return { currUser: haveUser };
   }

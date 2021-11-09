@@ -1,4 +1,5 @@
-import React, { useState, Redirect } from 'react';
+import React, { useState } from 'react';
+import { Navigate } from 'react-router-dom';
 import ApiUsers from '../api/apiUsers';
 
 const Login = () => {
@@ -26,7 +27,7 @@ const Login = () => {
   return (
     <div>
       {haveUser ? (
-        <Redirect to={{
+        <Navigate to={{
           pathname: '/main',
           state: user,
         }}
