@@ -1,11 +1,11 @@
-import React, { useCallback, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 import { Navigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { userApi, getUsers } from '../services/apiUsers';
+import { getUserSucess, resetUser } from '../actions/userActions';
 
 const Login = () => {
   const [user, setUser] = useState({ password: '', email: '' });
-  const [currUserState, setcurrUserState] = useState({});
   const [nothaveUser, setNotHaveUser] = useState(false);
   const [haveUser, setHaveUser] = useState(false);
 
@@ -33,24 +33,32 @@ const Login = () => {
   };
 
   const testUserApi = async () => {
-    const { data: { results } } = await userApi();
+    // const { data: { results } } = await userApi();
 
-    setcurrUserState(results[0]);
+    // setcurrUserState(results[0]);
 
     // const setUserState = useCallback(
     //   () => dispatch({ type: 'GET_USER_SUCESS' }),
     //   [dispatch],
     // );
   };
+
   const setUserState = useCallback(
-    async () => dispatch({ type: 'GET_USER_SUCESS', payload: await userApi() }),
+    async () => dispatch(getUserSucess(await userApi())),
   );
+
   const getLogin = async () => {
-    const results = await (await userApi());
-    setcurrUserState(results);
-    setUserState();
+    await setUserState();
     return setHaveUser(true);
   };
+
+  const resetuser = useCallback(
+    async () => dispatch(resetUser()),
+  );
+
+  useEffect(() => {
+    resetuser();
+  }, []);
 
   return (
     <div>
@@ -80,6 +88,7 @@ const Login = () => {
           type="password"
         />
       </label>
+      <br />
       <button type="button" onClick={getUser}>Login</button>
       <button type="button" onClick={testUserApi}>Test Api Users</button>
       <button type="button" onClick={getLogin}>Send User to redux State</button>

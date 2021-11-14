@@ -1,4 +1,4 @@
-import { GET_USER_SUCESS, SET_USER_NAME } from '../actions/userActions';
+import { GET_USER_SUCESS, SET_USER_NAME, RESET_USER } from '../actions/userActions';
 
 const INITIAL_STATE = {
   user: {},
@@ -6,10 +6,11 @@ const INITIAL_STATE = {
 
 function pokeReducer(state = INITIAL_STATE, action) {
   switch (action.type) {
+    case RESET_USER:
+      return { user: {} };
     case GET_USER_SUCESS:
       return { ...state, user: action.payload };
     case SET_USER_NAME:
-      console.log(action);
       return {
         ...state,
         user: {
