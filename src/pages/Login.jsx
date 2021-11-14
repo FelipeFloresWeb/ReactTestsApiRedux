@@ -8,6 +8,7 @@ const Login = () => {
   const [user, setUser] = useState({ password: '', email: '' });
   const [nothaveUser, setNotHaveUser] = useState(false);
   const [haveUser, setHaveUser] = useState(false);
+  const [haveUserApi, setHaveUserApi] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -19,28 +20,20 @@ const Login = () => {
         setNotHaveUser(false);
       }, 1500);
     }
+    setHaveUserApi(true);
     const {
       password, email, userId, name,
     } = currUser;
     setUser({
       userId, password, email, name,
     });
-    return setHaveUser(true);
+    return setTimeout(() => {
+      setHaveUserApi(false);
+    }, 1500);
   };
 
   const setUserEmail = (e) => {
     setUser({ ...user, email: e.target.value });
-  };
-
-  const testUserApi = async () => {
-    // const { data: { results } } = await userApi();
-
-    // setcurrUserState(results[0]);
-
-    // const setUserState = useCallback(
-    //   () => dispatch({ type: 'GET_USER_SUCESS' }),
-    //   [dispatch],
-    // );
   };
 
   const setUserState = useCallback(
@@ -70,7 +63,8 @@ const Login = () => {
         />
       ) : ''}
       <h2>Login</h2>
-      <h4>{nothaveUser ? 'Usuário não encontrado' : ''}</h4>
+      { haveUserApi ? <h2>Usuário encontrado!</h2> : ''}
+      {nothaveUser ? <h2>Usuário não encontrado</h2> : ''}
       <label htmlFor="input-email">
         Email:
         <input
@@ -90,7 +84,6 @@ const Login = () => {
       </label>
       <br />
       <button type="button" onClick={getUser}>Login</button>
-      <button type="button" onClick={testUserApi}>Test Api Users</button>
       <button type="button" onClick={getLogin}>Send User to redux State</button>
     </div>
   );
