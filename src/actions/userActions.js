@@ -1,5 +1,6 @@
 export const GET_USER_SUCESS = 'GET_USER_SUCESS';
 export const SET_USER_NAME = 'SET_USER_NAME';
+export const RESET_USER = 'RESET_USER';
 
 export const getUserSucess = (payload) => ({
   type: GET_USER_SUCESS,
@@ -11,11 +12,7 @@ export const setUserName = (payload) => ({
   payload,
 });
 
-// export const getPokemonsThunk = () => async (dispatch) => {
-//   try {
-//     const pokemons = await getAllPokemons();
-//     dispatch(getPokemonsSucess(pokemons));
-//   } catch (error) {
-//     dispatch(getPokemonsError(error));
-//   }
-// };
+export const resetUser = (payload) => ({
+  type: RESET_USER,
+  payload,
+});
