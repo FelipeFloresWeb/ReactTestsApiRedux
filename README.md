@@ -29,6 +29,9 @@
   <a href="https://reactjs.org/" target="_blank">
   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="65" height="65"/>
   </a>
+  <a href="https://react-redux.js.org/" target="_blank">
+  <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/redux/redux-original.svg" alt="redux" width="65" height="65"/>
+  </a>
 </p>
 
 ## 💥 Importante 💥
