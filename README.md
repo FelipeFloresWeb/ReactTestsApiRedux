@@ -29,5 +29,7 @@
   <a href="https://reactjs.org/" target="_blank">
   <img src="https://raw.githubusercontent.com/devicons/devicon/master/icons/react/react-original-wordmark.svg" alt="react" width="65" height="65"/>
   </a>
-  
 </p>
+
+## 💥 Importante 💥
+### Este projeto não está estilizado, apenas está funcional 🙂
